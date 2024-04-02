@@ -1,0 +1,27 @@
+kind: project
+metadata:
+  name: flipkart-review1-nashtech
+  created: '2024-04-02T10:24:03.113602'
+spec:
+  functions:
+  - url: data.py
+    name: flipkart
+    kind: job
+    image: mlrun/mlrun
+    handler: flipkart
+  - url: data.py
+    name: flipkart-transformed
+    kind: job
+    image: mlrun/mlrun
+    handler: flipkart
+  workflows: []
+  artifacts: []
+  conda: ''
+  source: ''
+  desired_state: online
+  build:
+    commands: []
+    requirements: []
+  custom_packagers: []
+status:
+  state: online
