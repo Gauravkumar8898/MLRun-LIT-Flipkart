@@ -18,7 +18,6 @@ def flipkart(context, format="csv"):
     context.logger.info("saving flipkart dataframe")
 
 
-
 if __name__ == "__main__":
     with mlrun.get_or_create_ctx(
             "flipkart", upload_artifacts=True
