@@ -18,35 +18,20 @@ class Eda:
         pd.DataFrame.iteritems = pd.DataFrame.items
         new_df.to_csv(transformed_dataset_path, index=False)
 
-    @staticmethod
-    def splitting(self, final_data):
-        train = final_data.shuffle(seed=42).select([i for i in list(range(30000))])
-        test = final_data.shuffle(seed=42).select([i for i in list(range(30000, 40000))])
-        # train = final_data.shuffle(seed=42).select([i for i in list(range(1000))])
-        # test = final_data.shuffle(seed=42).select([i for i in list(range(1000, 1300))])
-        return train, test
-
-    @staticmethod
-    def punctuation_handling(self, df):
-        # df['product_price']=df['product_price'].map()
-        # df['Rate'].value_counts()
-        # df = df[(df.Rate != 'Pigeon Favourite Electric Kettle??????(1.5 L, Silver, Black)') & (
-        #         df.Rate != "Bajaj DX 2 L/W Dry Iron") & (
-        #                 df.Rate != 'Nova Plus Amaze NI 10 1100 W Dry Iron?ÃƒÂ¿?ÃƒÂ¿(Grey & Turquoise)')]
-        #
-        # punctuations = string.punctuation
-        # df['Review'] = df['Review'].str.replace('[{}]'.format(punctuations), '')
-        # df['Summary'] = df['Summary'].str.replace('[{}]'.format(punctuations), '')
-        # df_class = df[(df.Sentiment == 'positive') | (df.Sentiment == 'negative')]
-        # df_class = df_class.fillna(df_class.mode().iloc[0])
-        # x = df_class['Summary']
-        # y = df_class['Sentiment']
-        df.dropna(inplace=True)
-        final_dataset = Dataset.from_pandas(df[['Summary', 'sentiment_code']])
-        train_dataset, test_dataset = self.splitting(final_dataset)
-        logging.info('New train dataset:\n%s', train_dataset)
-        logging.info('New test dataset:\n%s', test_dataset)
-        return train_dataset, test_dataset
+    # @staticmethod
+    # def splitting(self, final_data):
+    #     train = final_data.shuffle(seed=42).select([i for i in list(range(30000))])
+    #     test = final_data.shuffle(seed=42).select([i for i in list(range(30000, 40000))])
+    #     return train, test
+    #
+    # @staticmethod
+    # def punctuation_handling(self, df):
+    #     df.dropna(inplace=True)
+    #     final_dataset = Dataset.from_pandas(df[['Summary', 'sentiment_code']])
+    #     train_dataset, test_dataset = self.splitting(final_dataset)
+    #     logging.info('New train dataset:\n%s', train_dataset)
+    #     logging.info('New test dataset:\n%s', test_dataset)
+    #     return train_dataset, test_dataset
 
 #
 # obj = Eda()
