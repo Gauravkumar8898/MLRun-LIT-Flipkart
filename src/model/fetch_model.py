@@ -1,10 +1,10 @@
 from mlrun.artifacts import get_model
 import zipfile
 import logging
-from src.utils.constant import model_download_directory, project
+from src.utils.constant import model_download_directory
 
 logging.basicConfig(level=logging.INFO)
-
+project = mlrun.get_or_create_project('hugging-face-trainer', context="./", user_project=True)
 
 class LoadModel:
 

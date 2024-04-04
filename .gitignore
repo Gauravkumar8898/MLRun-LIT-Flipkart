@@ -5,3 +5,6 @@ models
 src/model/model.zip
 src/model/tokenizer.zip
 huggingface.pkl
+artifacts/
+finetuning-sentiment-model-3000-samples/
+project.yaml
