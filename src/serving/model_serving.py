@@ -1,20 +1,24 @@
 import mlrun
-serving_function = mlrun.import_function('function.yaml')
-serving_function.add_model(
+from src.utils.constant import hugging_face,model_path
+
+serving_fn = mlrun.code_to_function('serving', filename=hugging_face,
+                                    kind='serving', image='mlrun/ml-models:1.5.0-rc9',
+                                    requirements=['transformers==4.21.3', 'tensorflow==2.9.2', "torch==2.2.2", "Datasets==2.10.1"])
+
+serving_fn.add_model(
     'mymodel',
     class_name='HuggingFaceModelServer',
-    model_path='123',  # This is not used, just for enabling the process.
+    model_path=model_path,  # This is not used, just for enabling the process.
 
     task="sentiment-analysis",
     model_class="AutoModelForSequenceClassification",
-    model_name="akshatmehta98/roberta-base-fine-tuned-flipkart-reviews-am",
     tokenizer_class="AutoTokenizer",
-    tokenizer_name="akshatmehta98/roberta-base-fine-tuned-flipkart-reviews-am",
+    tokenizer_name="/home/nashtech/PycharmProjects/LIT-flipkart/models",
 )
-server = serving_function.to_mock_server()
+server = serving_fn.to_mock_server()
 result = server.test(
     '/v2/models/mymodel',
     body={"inputs": ["Nous sommes très heureux de vous présenter la bibliothèque 🤗 Transformers."]}
 )
 print(f"prediction: {result['outputs']}")
-serving_function.deploy()
+# serving_fn.deploy()

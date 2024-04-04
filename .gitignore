@@ -4,3 +4,4 @@ src/model/finetuning-sentiment-model-3000-samples
 models
 src/model/model.zip
 src/model/tokenizer.zip
+huggingface.pkl
