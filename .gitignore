@@ -1,2 +1,7 @@
 .idea*
 __pycache__
+project.yaml
+tokenizer*
+*.zip
+compose.yaml
+env.sh

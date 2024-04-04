@@ -27,8 +27,12 @@ serving_fn.add_model(key=model_key,
                      class_name=serving_model_class_name,
                      model_path=model_path,
                      model=model,
+                     tokenizer='/home/nashtech/mlrun-data/hugging-face-trainer-nashtech/hugging-face-classifier-trainer-train/0/model/tokenizer_config.json',
+                     tokenizer_path=model_path
+
                      )
 
-mock_server = serving_fn.to_mock_server()
-my_data = {"inputs":[["Hello there"],["No I dont know"]]}
-mock_server.test(f"/v2/models/{model_key}/infer", body=my_data)
+print(serving_fn)
+# mock_server = serving_fn.to_mock_server()
+# my_data = {"inputs":[["Hello there"],["No I dont know"]]}
+# mock_server.test(f"/v2/models/{model_key}/infer", body=my_data)
